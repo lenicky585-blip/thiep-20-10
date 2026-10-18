@@ -1,0 +1,787 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0f5">
+<title>Vườn Hoa Tháng Mười 🌷</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap');
+
+:root {
+  --pink: #e879a5;
+  --deep: #a74472;
+  --cream: #fff8f5;
+  --purple: #b6a0df;
+  --text: #74465d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 10% 10%, #ffe0ec 0, transparent 45%),
+    radial-gradient(ellipse at 90% 80%, #e9e0ff 0, transparent 45%),
+    linear-gradient(145deg, #fff9f3, #fff0f7 55%, #f6efff);
+}
+
+button {
+  font: inherit;
+}
+
+button:focus-visible {
+  outline: 3px solid #a74472;
+  outline-offset: 4px;
+}
+
+#petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.petal {
+  position: absolute;
+  top: -35px;
+  animation: fall linear forwards;
+  opacity: .8;
+  user-select: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translate3d(var(--drift), 110vh, 0) rotate(720deg);
+    opacity: .15;
+  }
+}
+
+main {
+  width: min(920px, 100%);
+  margin: auto;
+  padding: 35px 20px 50px;
+}
+
+.hero {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 40px 12px;
+}
+
+.eyebrow {
+  letter-spacing: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--deep);
+  text-transform: uppercase;
+}
+
+h1, h2, .script {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-size: clamp(46px, 9vw, 88px);
+  line-height: 1.12;
+  margin: 20px 0 12px;
+  background: linear-gradient(120deg, #c14c83, #ed91b7, #9573c5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: appear 1.2s ease both;
+}
+
+.hero p {
+  max-width: 530px;
+  line-height: 1.9;
+  font-size: 14px;
+  color: #96677e;
+}
+
+.flower {
+  font-size: clamp(40px, 8vw, 68px);
+  margin: 20px 0;
+  animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-8deg) translateY(0); }
+  50% { transform: rotate(8deg) translateY(-9px); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 25px;
+  background: linear-gradient(110deg, #df79a6, #b38cda);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 25px #d58bb64d;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px #d58bb666;
+}
+
+.btn:active {
+  transform: scale(.97);
+}
+
+.section {
+  margin: 26px 0;
+  padding: clamp(22px, 5vw, 42px);
+  border: 1px solid #ffffffc9;
+  border-radius: 28px;
+  background: #ffffff91;
+  box-shadow: 0 15px 55px #b77d9c13;
+  backdrop-filter: blur(12px);
+  text-align: center;
+  animation: appear .8s ease both;
+}
+
+.section h2 {
+  font-size: clamp(34px, 6vw, 48px);
+  color: var(--deep);
+  margin: 0 0 14px;
+}
+
+.section p {
+  line-height: 1.95;
+  font-size: 14px;
+}
+
+.small-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #b47798;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.envelope-area {
+  padding: 24px 0;
+  perspective: 900px;
+}
+
+.envelope {
+  width: min(290px, 85%);
+  height: 190px;
+  position: relative;
+  margin: 10px auto 25px;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  display: block;
+  filter: drop-shadow(0 14px 14px #a35b7920);
+}
+
+.env-body {
+  position: absolute;
+  inset: 35px 0 0;
+  border-radius: 5px 5px 14px 14px;
+  background: linear-gradient(140deg, #f7b8d1, #e99bbb);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.env-fold {
+  position: absolute;
+  inset: 35px 0 0;
+  background: #e78ab3;
+  clip-path: polygon(0 0, 50% 60%, 100% 0, 100% 100%, 0 100%);
+}
+
+.env-flap {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  height: 105px;
+  background: #f9c8dc;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform .8s ease;
+  z-index: 3;
+}
+
+.seal {
+  position: absolute;
+  top: 89px;
+  left: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #c34f82;
+  color: white;
+  display: grid;
+  place-items: center;
+  z-index: 4;
+  transition: opacity .3s;
+}
+
+.envelope.open .env-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope.open .seal {
+  opacity: 0;
+}
+
+.letter {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 1s ease, opacity .7s ease;
+  background: #fffaf8;
+  border-radius: 18px;
+  padding: 0 22px;
+  margin: 0 auto;
+  max-width: 580px;
+}
+
+.letter.show {
+  max-height: 900px;
+  opacity: 1;
+  padding: 27px 22px;
+  border: 1px solid #f5d4e3;
+}
+
+.letter h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 34px;
+  color: var(--deep);
+  margin-top: 0;
+}
+
+.letter p {
+  white-space: pre-line;
+}
+
+.caret::after {
+  content: '▋';
+  color: var(--pink);
+  animation: blink .7s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.garden {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 26px auto;
+  max-width: 560px;
+}
+
+.garden button {
+  min-height: 115px;
+  border: 1px solid #f5d8e5;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #fff6fa, #f6efff);
+  color: var(--text);
+  cursor: pointer;
+  padding: 12px 5px;
+  transition: transform .25s, background .25s;
+}
+
+.garden button:hover {
+  transform: translateY(-5px) rotate(-1deg);
+  background: #fff;
+}
+
+.garden .emoji {
+  display: block;
+  font-size: 34px;
+  margin-bottom: 9px;
+}
+
+.garden .caption {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+#wish {
+  min-height: 65px;
+  padding: 15px;
+  border-radius: 16px;
+  background: #fff6fa;
+  display: grid;
+  place-items: center;
+  color: #a34d77;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.memory {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.memory-card {
+  min-height: 125px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fff0f6, #eee7ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 5px;
+}
+
+.memory-card span {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.memory-card small {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.closing {
+  padding: 52px 20px;
+  text-align: center;
+}
+
+.closing h2 {
+  font-size: clamp(40px, 8vw, 64px);
+  color: var(--deep);
+  margin: 16px 0;
+}
+
+footer {
+  text-align: center;
+  font-size: 11px;
+  color: #ad8096;
+  padding: 20px 0 10px;
+}
+
+.music-btn {
+  position: fixed;
+  z-index: 10;
+  right: 16px;
+  bottom: 16px;
+  border: 1px solid #ffffff;
+  background: #fffaf0eF;
+  color: var(--deep);
+  border-radius: 999px;
+  padding: 12px 16px;
+  box-shadow: 0 5px 22px #74465d18;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.music-btn.playing {
+  animation: sway 2s infinite;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 500px) {
+  main { padding: 18px 12px 35px; }
+  .hero { min-height: 73vh; }
+  .section { border-radius: 22px; margin: 16px 0; }
+  .garden { gap: 7px; }
+  .garden button { min-height: 105px; }
+  .memory { gap: 7px; }
+  .memory-card { min-height: 115px; }
+  .music-btn { right: 10px; bottom: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="petals" aria-hidden="true"></div>
+
+<main>
+  <header class="hero" id="top">
+    <div class="eyebrow">A little gift from our hearts</div>
+    <div class="flower" aria-hidden="true">🌷 🌸 🌷</div>
+    <h1>Vườn hoa<br>tháng Mười</h1>
+    <p>
+      Gửi đến những người phụ nữ tuyệt vời một chút dịu dàng,
+      một chút yêu thương và thật nhiều niềm vui. 💗
+    </p>
+    <p><strong>20 tháng 10 · Ngày Phụ nữ Việt Nam</strong></p>
+    <button class="btn" id="startBtn">Mở món quà yêu thương 💌</button>
+  </header>
+
+  <section class="section" id="letterSection">
+    <div class="small-label">A letter for you</div>
+    <h2>Một lá thư nhỏ</h2>
+    <p>Chạm vào phong thư để khám phá món quà nhé!</p>
+
+    <div class="envelope-area">
+      <button class="envelope" id="envelope"
+        aria-label="Mở phong thư" aria-expanded="false">
+        <span class="env-body"></span>
+        <span class="env-fold"></span>
+        <span class="env-flap"></span>
+        <span class="seal">♥</span>
+      </button>
+    </div>
+
+    <article class="letter" id="letter" aria-live="polite">
+      <h3>Gửi những bông hoa tháng Mười 🌷</h3>
+      <p id="typedText"></p>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="small-label">Little garden of wishes</div>
+    <h2>Khu vườn lời chúc</h2>
+    <p>
+      Mỗi bông hoa là một lời chúc nhỏ.
+      Bro thử nhấn vào từng bông xem sao nhé! ✨
+    </p>
+
+    <div class="garden">
+      <button data-wish="Chúc bạn luôn vui vẻ, tự tin và tỏa sáng theo cách riêng của mình! 🌟">
+        <span class="emoji">🌻</span>
+        <span class="caption">Hoa mặt trời</span>
+      </button>
+      <button data-wish="Chúc bạn có thật nhiều sức khỏe, bình an và những ngày ngập tràn tiếng cười! 🌼">
+        <span class="emoji">🌼</span>
+        <span class="caption">Hoa bình an</span>
+      </button>
+      <button data-wish="Mong mọi điều tốt đẹp sẽ dịu dàng tìm đến bạn, hôm nay và cả những ngày sau! 💗">
+        <span class="emoji">🌸</span>
+        <span class="caption">Hoa yêu thương</span>
+      </button>
+      <button data-wish="Chúc cô luôn mạnh khỏe, hạnh phúc và giữ mãi ngọn lửa yêu nghề! 📚">
+        <span class="emoji">🌷</span>
+        <span class="caption">Hoa tri ân</span>
+      </button>
+      <button data-wish="Chúc những ước mơ đẹp nhất của bạn sẽ dần trở thành hiện thực! 🦋">
+        <span class="emoji">🦋</span>
+        <span class="caption">Hoa ước mơ</span>
+      </button>
+      <button data-wish="Gửi bạn một cái ôm bằng lời chúc: luôn được yêu thương và trân trọng! 💐">
+        <span class="emoji">💐</span>
+        <span class="caption">Hoa hạnh phúc</span>
+      </button>
+    </div>
+
+    <div id="wish" aria-live="polite">
+      🌷 Chọn một bông hoa để nhận lời chúc nhé!
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="small-label">Moments to remember</div>
+    <h2>Góc nhỏ kỷ niệm</h2>
+    <p>
+      Có những điều giản dị nhưng khiến mỗi ngày trở nên đáng nhớ.
+      Cảm ơn vì đã cùng nhau tạo nên những kỷ niệm đẹp. 💕
+    </p>
+
+    <div class="memory">
+      <div class="memory-card">
+        <span>📚</span>
+        <small>Những giờ học<br>đầy kỷ niệm</small>
+      </div>
+      <div class="memory-card">
+        <span>🌻</span>
+        <small>Những nụ cười<br>thân thương</small>
+      </div>
+      <div class="memory-card">
+        <span>🎀</span>
+        <small>Những điều nhỏ<br>mà ý nghĩa</small>
+      </div>
+    </div>
+
+    <p style="font-size:12px;color:#a77b91">
+      Góc này có thể thay bằng ảnh thật của lớp sau này nhé!
+    </p>
+  </section>
+
+  <section class="closing">
+    <div class="flower" aria-hidden="true">💗 🌸 💗</div>
+    <div class="small-label">With love, from our class</div>
+    <h2>Chúc mừng 20/10!</h2>
+    <p style="line-height:2">
+      Chúc các cô luôn mạnh khỏe, hạnh phúc và thành công.<br>
+      Chúc tất cả các bạn nữ luôn tự tin, rạng rỡ,<br>
+      được yêu thương và sống với những điều mình yêu. 🌷
+    </p>
+    <p class="script" style="font-size:30px;color:#b85c88">
+      Cảm ơn vì đã làm thế giới này đẹp hơn!
+    </p>
+    <button class="btn" id="heartBtn">Gửi một trái tim 💖</button>
+    <p id="heartMessage" aria-live="polite"></p>
+    <p><button class="btn" id="backBtn" style="background:#c0a2d9">
+      Trở về đầu trang ↑
+    </button></p>
+  </section>
+
+  <footer>
+    Made with ♡ and a little bit of code · 20/10
+  </footer>
+</main>
+
+<button class="music-btn" id="musicBtn" aria-pressed="false">
+  ♫ Bật nhạc
+</button>
+
+<script>
+(() => {
+  const $ = (selector) => document.querySelector(selector);
+
+  // Hoa rơi
+  const petals = $('#petals');
+  const petalSymbols = ['🌸', '🌷', '✿', '💗', '❀'];
+  let petalTimer = null;
+
+  function createPetal() {
+    const petal = document.createElement('span');
+    petal.className = 'petal';
+    petal.textContent =
+      petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
+
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.fontSize = (12 + Math.random() * 14) + 'px';
+    petal.style.setProperty('--drift',
+      (Math.random() * 180 - 90) + 'px');
+    petal.style.animationDuration = (7 + Math.random() * 7) + 's';
+
+    petals.appendChild(petal);
+    setTimeout(() => petal.remove(), 15000);
+  }
+
+  function startPetals() {
+    if (petalTimer) return;
+    petalTimer = setInterval(createPetal, 450);
+  }
+
+  startPetals();
+
+  // Nút mở đầu
+  $('#startBtn').addEventListener('click', () => {
+    $('#letterSection').scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+  });
+
+  // Mở phong thư + hiệu ứng chữ
+  const envelope = $('#envelope');
+  const letter = $('#letter');
+  const typedText = $('#typedText');
+
+  const message =
+`Nhân ngày Phụ nữ Việt Nam 20/10,
+
+Tập thể lớp xin gửi đến các cô cùng tất cả những người phụ nữ tuyệt vời lời chúc chân thành nhất.
+
+Chúc các cô luôn mạnh khỏe, hạnh phúc, giữ mãi niềm đam mê với nghề và tiếp tục truyền cảm hứng cho bao thế hệ học trò.
+
+Chúc các bạn nữ luôn tự tin, vui vẻ, gặp nhiều may mắn và can đảm theo đuổi những ước mơ của mình.
+
+Mong rằng không chỉ riêng ngày 20/10, mà mỗi ngày đều mang đến cho mọi người thật nhiều yêu thương, sự trân trọng và những nụ cười.
+
+Cảm ơn vì đã làm cho cuộc sống này trở nên dịu dàng và tươi đẹp hơn!
+
+Thân thương,
+Tập thể lớp 💗`;
+
+  let opened = false;
+  let typingTimer = null;
+
+  envelope.addEventListener('click', () => {
+    if (opened) return;
+    opened = true;
+
+    envelope.classList.add('open');
+    envelope.setAttribute('aria-expanded', 'true');
+    letter.classList.add('show');
+    typedText.classList.add('caret');
+
+    let index = 0;
+
+    function typeNext() {
+      if (index < message.length) {
+        typedText.textContent += message[index];
+        index++;
+
+        const char = message[index - 1];
+        const delay = '.!?💗'.includes(char) ? 180 : 24;
+        typingTimer = setTimeout(typeNext, delay);
+      } else {
+        typedText.classList.remove('caret');
+      }
+    }
+
+    typeNext();
+  });
+
+  // Khu vườn lời chúc
+  document.querySelectorAll('.garden button').forEach((button) => {
+    button.addEventListener('click', () => {
+      $('#wish').textContent = button.dataset.wish;
+      button.animate(
+        [
+          { transform: 'scale(1)' },
+          { transform: 'scale(1.08)' },
+          { transform: 'scale(1)' }
+        ],
+        { duration: 350 }
+      );
+    });
+  });
+
+  // Trái tim
+  $('#heartBtn').addEventListener('click', () => {
+    $('#heartMessage').textContent =
+      '💗 Một trái tim nhỏ, gửi thật nhiều yêu thương đến mọi người! 💗';
+
+    for (let i = 0; i < 12; i++) {
+      setTimeout(createPetal, i * 90);
+    }
+  });
+
+  $('#backBtn').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Nhạc nền tạo bằng Web Audio API.
+  // Không cần tải file nhạc bên ngoài.
+  let audioContext = null;
+  let masterGain = null;
+  let musicOn = false;
+  let musicTimer = null;
+  let noteIndex = 0;
+
+  const melody = [
+    [523.25, 0.45], [659.25, 0.45],
+    [783.99, 0.7], [659.25, 0.45],
+    [587.33, 0.45], [659.25, 0.45],
+    [523.25, 0.9], [392.00, 0.9],
+    [440.00, 0.45], [523.25, 0.45],
+    [587.33, 0.7], [523.25, 0.45],
+    [440.00, 0.45], [392.00, 0.9]
+  ];
+
+  function playNote() {
+    if (!musicOn || !audioContext || !masterGain) return;
+
+    const [frequency, duration] = melody[noteIndex % melody.length];
+    noteIndex++;
+
+    const now = audioContext.currentTime;
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(frequency, now);
+
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(0.07, now + 0.04);
+    gain.gain.exponentialRampToValueAtTime(
+      0.0001, now + duration * 0.9
+    );
+
+    oscillator.connect(gain);
+    gain.connect(masterGain);
+
+    oscillator.start(now);
+    oscillator.stop(now + duration);
+
+    musicTimer = setTimeout(playNote, duration * 1000);
+  }
+
+  $('#musicBtn').addEventListener('click', async () => {
+    const button = $('#musicBtn');
+
+    if (musicOn) {
+      musicOn = false;
+      clearTimeout(musicTimer);
+
+      if (masterGain && audioContext) {
+        masterGain.gain.setTargetAtTime(
+          0.0001, audioContext.currentTime, 0.04
+        );
+      }
+
+      button.textContent = '♫ Bật nhạc';
+      button.classList.remove('playing');
+      button.setAttribute('aria-pressed', 'false');
+      return;
+    }
+
+    try {
+      const AudioContextClass =
+        window.AudioContext || window.webkitAudioContext;
+
+      if (!AudioContextClass) {
+        button.textContent = 'Trình duyệt không hỗ trợ nhạc';
+        return;
+      }
+
+      if (!audioContext) {
+        audioContext = new AudioContextClass();
+        masterGain = audioContext.createGain();
+        masterGain.gain.value = 0.5;
+        masterGain.connect(audioContext.destination);
+      }
+
+      await audioContext.resume();
+
+      musicOn = true;
+      button.textContent = '♫ Tắt nhạc';
+      button.classList.add('playing');
+      button.setAttribute('aria-pressed', 'true');
+
+      playNote();
+    } catch (error) {
+      musicOn = false;
+      button.textContent = 'Không bật được nhạc';
+    }
+  });
+})();
+</script>
+</body>
+</html>
